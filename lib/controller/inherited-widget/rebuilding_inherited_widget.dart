@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:our_app/controller/inherited-widget/widgets-lists/widgets_lists.dart';
+
+import 'building_inherited_widget.dart';
 
 class RebuildingInheritedWidget extends StatefulWidget {
   @override
@@ -40,6 +43,10 @@ Widget _childrenList() => ListView(
           height: 10.0,
         ),
         FatherClass(),
+        SizedBox(
+          height: 10.0,
+        ),
+        BuildingInheritedWidget(),
         SizedBox(
           height: 10.0,
         ),
@@ -151,58 +158,5 @@ class _IAmTheOnlyChildOfMyFatherState extends State<IAmTheOnlyChildOfMyFather> {
         ],
       ),
     );
-  }
-}
-
-class EyeColor extends InheritedWidget {
-  const EyeColor({
-    Key key,
-    @required this.color,
-    @required Widget child,
-  })  : assert(color != null),
-        assert(child != null),
-        super(key: key, child: child);
-
-  final Color color;
-
-  static EyeColor of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<EyeColor>();
-  }
-
-  @override
-  bool updateShouldNotify(EyeColor old) => color != old.color;
-}
-
-class ChangingAge extends InheritedWidget {
-  const ChangingAge({
-    Key key,
-    @required this.age,
-    @required Widget child,
-  })  : assert(age != null),
-        super(key: key, child: child);
-
-  final ChangeAge age;
-
-  static ChangingAge of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ChangingAge>();
-  }
-
-  @override
-  bool updateShouldNotify(ChangingAge old) => age != old.age;
-}
-
-class ChangeAge {
-  int age;
-  ChangeAge({this.age});
-  void changeAge() {
-    age += 5;
-  }
-}
-
-class ChangeColor {
-  Color textColor;
-  ChangeColor({this.textColor});
-  void changeColor() {
-    textColor = Colors.deepPurple;
   }
 }
