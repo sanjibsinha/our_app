@@ -30,6 +30,46 @@ class _InheritedWidgetOnTopState extends State<InheritedWidgetOnTop> {
   }
 }
 
+class GrandParent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final eyeColor = EyeColor.of(context).color;
+    return Column(
+      children: [
+        Text(
+          'I am the Grandparent, although I am a Ghost now! I had two sons.',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25.0,
+            color: eyeColor,
+          ),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        FatherClass(),
+      ],
+    );
+  }
+}
+
+class FatherClass extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'I am the Father. I have two brothers.',
+          style: TextStyle(
+              color: EyeColor.of(context).color,
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+}
+
 class UncleClasses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -63,31 +103,28 @@ class _FirstUncleClassState extends State<FirstUncleClass> {
   var firstUncleAge = new ChangeAge(age: 35);
   @override
   Widget build(BuildContext context) {
-    return ChangingAge(
-      age: new ChangeAge(age: 25),
-      child: Column(
-        children: [
-          Text(
-            'I am First Uncle, ${firstUncleAge.age} years old, change my age by add button below.',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.lightGreenAccent,
-                backgroundColor: Colors.black),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                firstUncleAge.changeAge();
-              });
-            },
-            child: Icon(Icons.add),
-            backgroundColor: Colors.blue,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          'I am First Uncle, ${firstUncleAge.age} years old, change my age by add button below.',
+          style: TextStyle(
+              fontSize: 30.0,
+              color: Colors.lightGreenAccent,
+              backgroundColor: Colors.black),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              firstUncleAge.changeAge();
+            });
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+        ),
+      ],
     );
   }
 }
@@ -101,71 +138,64 @@ class _UncleClassState extends State<UncleClass> {
   var secondUncleAge = new ChangeAge(age: 30);
 
   Widget build(BuildContext context) {
-    return ChangingAge(
-      age: new ChangeAge(age: 25),
-      child: Column(
-        children: [
-          Text(
-            'I am Second Uncle, ${secondUncleAge.age} years old, change my age by add button below.',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.lightBlueAccent,
-                backgroundColor: Colors.black),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                secondUncleAge.changeAge();
-              });
-            },
-            child: Icon(Icons.add),
-            backgroundColor: Colors.blue,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class GrandParent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return _childrenList();
-  }
-}
-
-Widget _childrenList() => Column(
+    return Column(
       children: [
         Text(
-          'I am the Grandparent, although I am a Ghost now! I had two sons.',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
+          'I am Second Uncle, ${secondUncleAge.age} years old, change my age by add button below.',
+          style: TextStyle(
+              fontSize: 30.0,
+              color: Colors.lightBlueAccent,
+              backgroundColor: Colors.black),
         ),
         SizedBox(
           height: 10.0,
         ),
-        FatherClass(),
+        FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              secondUncleAge.changeAge();
+            });
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+        ),
+        UnclesChildClass(),
       ],
     );
+  }
+}
 
-class FatherClass extends StatelessWidget {
+class UnclesChildClass extends StatefulWidget {
+  @override
+  _UnclesChildClassState createState() => _UnclesChildClassState();
+}
+
+class _UnclesChildClassState extends State<UnclesChildClass> {
+  var unclesChildAge = ChangeAge(age: 15);
   @override
   Widget build(BuildContext context) {
-    return EyeColor(
-      color: Colors.deepOrange,
-      child: Column(
-        children: [
-          Text(
-            'I am the Father. I have two brothers.',
-            style: TextStyle(
-                color: EyeColor.of(context).color,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          'I am Second Uncle\'s child, ${unclesChildAge.age} years old, change my age by add button below.',
+          style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.white,
+              backgroundColor: Colors.black),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              unclesChildAge.changeAge();
+            });
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+        ),
+      ],
     );
   }
 }

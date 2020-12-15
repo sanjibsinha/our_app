@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'controller/inherited-widget/inherited_widget_on_top.dart';
-import 'controller/inherited-widget/rebuilding_inherited_widget.dart';
 
 main() => runApp(OurApp());
 

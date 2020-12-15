@@ -1,6 +1,9 @@
 # our_app
 
-A new Flutter project.
+A new Flutter project where I have tried to explain what is InheritedWidget in Flutter.
+Although I have experimented a lot, you will find the real code and the explanation in my blog.
+
+- [ZeroDotOne](https://zerodotone.net/what-is-inherited-widget-in-flutter-how-do-you-use-state-management)
 
 ## Getting Started
 

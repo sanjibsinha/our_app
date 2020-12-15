@@ -44,11 +44,3 @@ class ChangeAge {
     age += 5;
   }
 }
-
-class ChangeColor {
-  Color textColor;
-  ChangeColor({this.textColor});
-  void changeColor() {
-    textColor = Colors.deepPurple;
-  }
-}
