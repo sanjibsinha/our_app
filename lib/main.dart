@@ -18,9 +18,18 @@ class OurApp extends StatelessWidget {
   }
 }
 
-class ACenterClass extends StatelessWidget {
+class ACenterClass extends StatefulWidget {
+  @override
+  _ACenterClassState createState() => _ACenterClassState();
+}
+
+class _ACenterClassState extends State<ACenterClass> {
+  var pressRemoteCount = 0;
+
   void pressRemote() {
-    print('Remote has been pressed.');
+    setState(() {
+      pressRemoteCount = pressRemoteCount + 1;
+    });
   }
 
   @override
@@ -29,7 +38,7 @@ class ACenterClass extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         width: 350.00,
-        height: 350.00,
+        height: 100.00,
         decoration: BoxDecoration(
           color: Colors.blue,
           border: Border.all(
@@ -59,7 +68,7 @@ class ACenterClass extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Press',
+              '$pressRemoteCount',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.blue,
